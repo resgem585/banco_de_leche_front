@@ -1,0 +1,265 @@
+import { gql } from "@apollo/client"
+// USER
+export const CREATE_USER = gql `
+mutation createUser($email:String, $password: String) {
+  createUser(email:$email, password:$password){
+    email
+    password
+  }
+}
+`
+export const UPDATE_USER = gql`
+
+
+
+mutation updateUser($_id: ID,$email:String, $password:String){
+  updateUser(_id: $_id,email:$email, password:$password){
+    _id
+    email
+    password
+  }
+}
+`
+export const DELETE_USER = gql`
+  mutation deleteUser($_id: ID) {
+    deleteUser(_id: $_id) {
+      _id
+      email
+      password
+    }
+  }
+`;
+// Donante
+
+export const CREATE_DONANTE = gql`
+  mutation createDonante(
+    $tipo: String,
+    $firstName: String,
+    $lastName: String,
+    $edad: Int,
+    $direccion: String,
+    $ocupacion: String,
+    $partos: Int,
+    $cesareas: Int,
+    $apellidosRNLactante: String,
+    $sdg: Int,
+    $fechaNacimRN: String,
+    $complicacionesEmbarazo: String,
+    $transfusionesUltimos5Anos: String,
+    $tatuajesPiercingsAcupunturaUltimoAno: String,
+    $tratamientoMedico: String,
+    $pruebaRapidaSifilis: String,
+    $pruebaRapidaVIH: String,
+    $pruebaRapidaHepatitisC: String,
+    $observaciones: String
+  ) {
+    createDonante(
+      tipo: $tipo,
+      firstName: $firstName,
+      lastName: $lastName,
+      edad: $edad,
+      direccion: $direccion,
+      ocupacion: $ocupacion,
+      partos: $partos,
+      cesareas: $cesareas,
+      apellidosRNLactante: $apellidosRNLactante,
+      sdg: $sdg,
+      fechaNacimRN: $fechaNacimRN,
+      complicacionesEmbarazo: $complicacionesEmbarazo,
+      transfusionesUltimos5Anos: $transfusionesUltimos5Anos,
+      tatuajesPiercingsAcupunturaUltimoAno: $tatuajesPiercingsAcupunturaUltimoAno,
+      tratamientoMedico: $tratamientoMedico,
+      pruebaRapidaSifilis: $pruebaRapidaSifilis,
+      pruebaRapidaVIH: $pruebaRapidaVIH,
+      pruebaRapidaHepatitisC: $pruebaRapidaHepatitisC,
+      observaciones: $observaciones
+    ) {
+      tipo
+      firstName
+      lastName
+      edad
+      direccion
+      ocupacion
+      partos
+      cesareas
+      apellidosRNLactante
+      sdg
+      fechaNacimRN
+      complicacionesEmbarazo
+      transfusionesUltimos5Anos
+      tatuajesPiercingsAcupunturaUltimoAno
+      tratamientoMedico
+      pruebaRapidaSifilis
+      pruebaRapidaVIH
+      pruebaRapidaHepatitisC
+      observaciones
+    }
+  }
+`;
+export const UPDATE_DONANTE = gql`
+  mutation updateDonante(
+    $_id: ID,
+    $tipo: String,
+    $firstName: String,
+    
+  ) {
+    updateDonante(
+      _id: $_id,
+      tipo: $tipo,
+      firstName: $firstName,
+      lastName: $lastName,
+      edad: $edad,
+      direccion: $direccion,
+      ocupacion: $ocupacion,
+      partos: $partos,
+      cesareas: $cesareas,
+      apellidosRNLactante: $apellidosRNLactante,
+      sdg: $sdg,
+      fechaNacimRN: $fechaNacimRN,
+      complicacionesEmbarazo: $complicacionesEmbarazo,
+      transfusionesUltimos5Anos: $transfusionesUltimos5Anos,
+      tatuajesPiercingsAcupunturaUltimoAno: $tatuajesPiercingsAcupunturaUltimoAno,
+      tratamientoMedico: $tratamientoMedico,
+      pruebaRapidaSifilis: $pruebaRapidaSifilis,
+      pruebaRapidaVIH: $pruebaRapidaVIH,
+      pruebaRapidaHepatitisC: $pruebaRapidaHepatitisC,
+      observaciones: $observaciones
+    ) {
+      _id
+      tipo
+      firstName
+      lastName
+      edad
+      direccion
+      ocupacion
+      partos
+      cesareas
+      apellidosRNLactante
+      sdg
+      fechaNacimRN
+      complicacionesEmbarazo
+      transfusionesUltimos5Anos
+      tatuajesPiercingsAcupunturaUltimoAno
+      tratamientoMedico
+      pruebaRapidaSifilis
+      pruebaRapidaVIH
+      pruebaRapidaHepatitisC
+      observaciones
+    }
+  }
+`;
+export const DELETE_DONANTE = gql`
+  mutation deleteDonante($_id: ID!) {
+    deleteDonante(_id: $_id) {
+      _id
+      tipo
+      firstName
+      lastName
+      edad
+      direccion
+      ocupacion
+      partos
+      cesareas
+      apellidosRNLactante
+      sdg
+      fechaNacimRN
+      complicacionesEmbarazo
+      transfusionesUltimos5Anos
+      tatuajesPiercingsAcupunturaUltimoAno
+      tratamientoMedico
+      pruebaRapidaSifilis
+      pruebaRapidaVIH
+      pruebaRapidaHepatitisC
+      observaciones
+    }
+  }
+`;
+
+// ADD DONANTE
+
+export const ADD_DONANTE = gql`
+  mutation AddDonante($firstName: String!, $lastName: String!, $tipo: String!, $sdg: String!) {
+    addDonante(firstName: $firstName, lastName: $lastName, tipo: $tipo, sdg: $sdg) {
+      id
+      firstName
+      lastName
+      tipo
+      sdg
+    }
+  }
+`;
+
+
+
+--------------
+
+import {gql} from '@apollo/client'
+
+
+export const LOGIN =  gql`
+query login($email:String, $password: String){
+    login(email: $email, password: $password){
+        _id
+        email
+        password
+    }
+}
+`
+// Donante
+
+export const GET_DONANTES = gql`
+  query getDonantes {
+    getDonantes {
+    _id 
+    tipo
+    firstName
+    lastName
+    edad
+    direccion
+    ocupacion
+    partos
+    cesareas
+    apellidosRNLactante
+    sdg
+    fechaNacimRN
+    complicacionesEmbarazo
+    transfusionesUltimos5Anos
+    tatuajesPiercingsAcupunturaUltimoAno
+    tratamientoMedico
+    pruebaRapidaSifilis
+    pruebaRapidaVIH
+    pruebaRapidaHepatitisC
+    observaciones
+    createdAt
+    updatedAt
+    }
+  }
+`;
+export const GET_DONANTE = gql`
+  query getDonante($id: ID!) {
+    getDonante(id: $id) {
+      _id
+      tipo
+      firstName
+      lastName
+      edad
+      direccion
+      ocupacion
+      partos
+      cesareas
+      apellidosRNLactante
+      sdg
+      fechaNacimRN
+      complicacionesEmbarazo
+      transfusionesUltimos5Anos
+      tatuajesPiercingsAcupunturaUltimoAno
+      tratamientoMedico
+      pruebaRapidaSifilis
+      pruebaRapidaVIH
+      pruebaRapidaHepatitisC
+      observaciones
+      createdAt
+      updatedAt
+    }
+  }
+`;
