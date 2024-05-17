@@ -2,62 +2,52 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CREATE_CALIDAD } from "../graphql/Mutation";
-
-// MUTATIONS
 import { CREATE_DONANTE } from "../graphql/Mutation";
 import { GET_DONANTES } from "../graphql/Queries";
 import { GET_CALIDADES } from "../graphql/Queries";
+import '../css/main.css';
 
 export const DonanteForm = () => {
   const navigate = useNavigate();
 
-  // Estados para el formulario
   const [tipo, setTipo] = useState("");
   const [firstName, setFirstName] = useState("");
 
-  // Mutación para crear un donante
   const [createDonante] = useMutation(CREATE_DONANTE, {
     refetchQueries: [{ query: GET_DONANTES }],
   });
 
-  // Mutación para crear una calidad
   const [createCalidad] = useMutation(CREATE_CALIDAD, {
     refetchQueries: [{ query: GET_CALIDADES }],
-  })
+  });
 
-  // Estado para mostrar el mensaje de éxito
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(firstName);
-  
     try {
-      // Crear la instancia de Donante
       const { data: { createDonante: donante } } = await createDonante({
         variables: {
           firstName: firstName,
         },
       });
-  
-      // Comprobar que 'donante' y 'donante.firstName' no son nulos
-      if (donante && donante.firstName) {
-        // Crear la instancia de Calidad relacionada con el Donante
+
+      if (donante && donante._id) {  // Asegúrate de usar el ID del donante
         const { data: { createCalidad: calidad } } = await createCalidad({
           variables: {
-            donante: donante.firstName,
-            olor: 'Cumple', // Puedes establecer un valor predeterminado o dejarlo vacío
+            input: {
+              donante: donante._id,  // Pasa el ObjectId aquí
+              olor: 'Cumple', 
+            },
           },
         });
-  
-        // Acceder a los datos del Donante relacionado
+
         const { donante: donanteRelacionado } = calidad;
         console.log('Donante relacionado:', donanteRelacionado);
-  
-        // Mostrar el mensaje de éxito
+
         setShowSuccessMessage(true);
       } else {
-        console.error("Error: 'donante' o 'donante.firstName' es nulo");
+        console.error("Error: 'donante' o 'donante._id' es nulo");
       }
     } catch (error) {
       console.error("Error al crear Donante y Calidad:", error);
@@ -66,11 +56,11 @@ export const DonanteForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div class="row form-group mb-2">
-        <div class="col">
-          <label for="tipo">Tipo</label>
+      <div className="row form-group mb-2">
+        <div className="col">
+          <label htmlFor="tipo">Tipo</label>
           <select
-            class="form-select"
+            className="form-select"
             id="tipo"
             name="tipo"
             required
@@ -82,11 +72,11 @@ export const DonanteForm = () => {
             <option value="Heteróloga">Heteróloga</option>
           </select>
         </div>
-        <div class="col">
-          <label for="firstName">Nombre</label>
+        <div className="col">
+          <label htmlFor="firstName">Nombre</label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="firstName"
             name="firstName"
             value={firstName}
@@ -95,17 +85,17 @@ export const DonanteForm = () => {
           />
         </div>
         <br />
-        <div class="mb-4"></div>
-        <div class="form-group mb-4">
-          <button type="submit" class="btn btn-primary">
-            {" "}Agregar Donante{" "}
+        <div className="mb-4"></div>
+        <div className="form-group mb-4">
+          <button type="submit" className="btn btn-primary">
+            Agregar Donante
           </button>
         </div>
 
         {showSuccessMessage && (
-          <div class="alert alert-success">
+          <div className="alert alert-success">
             Registro Exitoso!{" "}
-            <a href="/listaDonadoras" class="alert-link">
+            <a href="/listaDonadoras" className="alert-link">
               VER REGISTRO
             </a>
           </div>
