@@ -74,6 +74,37 @@ export const DELETE_DONANTE = gql`
     }
   }
 `;
+// Calidad
 
+export const CREATE_CALIDAD = gql`
+  mutation CREATE_CALIDAD($donante: ID!, $olor: String!) {
+  createCalidad(donante: $donante, olor: $olor) {
+    _id
+    donante {
+      _id
+      firstName
+    }
+    olor
+  }
+}
+`;
+
+export const UPDATE_CALIDAD = gql`
+  mutation updateCalidad($_id: ID!, $donante: String, $olor: String) {
+    updateCalidad(_id: $_id, donante: $donante, olor: $olor) {
+      _id
+      donante
+      olor
+    }
+  }
+`;
+
+export const DELETE_CALIDAD = gql`
+  mutation deleteCalidad($_id: ID!) {
+    deleteCalidad(_id: $_id) {
+      _id
+    }
+  }
+`;
 
 

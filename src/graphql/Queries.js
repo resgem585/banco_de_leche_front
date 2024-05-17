@@ -30,3 +30,18 @@ export const GET_DONANTE = gql`
     }
   }
 `;
+
+// Calidad
+
+export const GET_CALIDADES = gql`
+  query GetCalidades {
+    getCalidades {
+      _id
+      donante {
+        _id
+        firstName
+      }
+      olor
+    }
+  }
+`;

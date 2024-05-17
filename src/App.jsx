@@ -6,7 +6,8 @@ import { Home } from './pages/Home';
 import { Donante } from './pages/Donante';
 import { ListaDonadoras } from './pages/ListaDonadoras';
 import {DonanteDetalles} from './pages/DonanteDetalles';
-import { EditarDonante } from './pages/EditarDonante'; // Cambio aquí
+import { EditarDonante } from './pages/EditarDonante';
+import { ListaCalidades } from './pages/ListaCalidades'; // Importa aquí // Cambio aquí
 
 function App() {
   const client = new ApolloClient({
@@ -24,7 +25,8 @@ function App() {
           <Route path="/donante" element={<Donante />} />
           <Route path="/listaDonadoras" element={<ListaDonadoras />} />
           <Route path="/DonanteDetalles/:id" element={<DonanteDetalles />} />
-          <Route path="/EditarDonante/:id" element={<EditarDonante />} /> {/* Nueva ruta para editar */}
+          <Route path="/EditarDonante/:id" element={<EditarDonante />} />
+          <Route path="/ListaCalidades" element={<ListaCalidades />} />
         </Routes>
       </ApolloProvider>
     </Router>
