@@ -46,9 +46,9 @@ export const GET_CALIDADES = gql`
 `;
 
 export const GET_CALIDAD = gql`
-  query GetCalidad($_id: ID!) {
-    getCalidad(id: $_id) {
-      id
+  query GetCalidad($id: ID!) {
+    getCalidad(id: $id) {
+      _id
       donante {
         
         firstName

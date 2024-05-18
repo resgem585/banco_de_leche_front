@@ -5,6 +5,8 @@ import { GET_DONANTE } from '../graphql/Queries';
 import { UPDATE_DONANTE } from '../graphql/Mutation';
 
 function EditDonante() {
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [updateSuccess, setUpdateSuccess] = useState(false);
   const { id } = useParams();
 
    // Inicializa el estado para cada campo del formulario
@@ -33,7 +35,6 @@ function EditDonante() {
   const [tipo, setTipo] = useState('');
 
      // Estado para rastrear si la actualización fue exitosa
-  const [updateSuccess, setUpdateSuccess] = useState(false);
   
   
   const { data, loading, error } = useQuery(GET_DONANTE, {
@@ -146,7 +147,7 @@ function EditDonante() {
         pruebaRapidaHepatitisC,
         observaciones,/* otros campos */ }});
       // Mostrar el mensaje de éxito
-      setShowSuccessMessage(true);
+      setUpdateSuccess(true);
     } catch (error) {
       console.error("Error updating donante:", error);
       // Manejar el error
@@ -454,12 +455,19 @@ function EditDonante() {
           </div>
         </div>
       </div>  
-        <div className="row form-group mb-2">
+      <div className="row form-group mb-2">
           <div className="col">
             {/* Cambia el texto del botón a "ACTUALIZAR" */}
             <button type="submit" className="btn btn-primary">ACTUALIZAR</button>
             {/* Muestra el mensaje de éxito si la actualización fue exitosa */}
-            {updateSuccess && <p>Se ha actualizado correctamente</p>}
+            {updateSuccess && 
+              <div className="alert alert-success">
+                Se ha actualzado!{" "}
+                <a href="/listaDonadoras" className="alert-link">
+                  VER REGISTRO
+                </a>
+              </div>
+            }
           </div>
         </div>
       </form>  
