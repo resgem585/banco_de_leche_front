@@ -35,15 +35,65 @@ export const CREATE_DONANTE = gql`
   mutation createDonante(
     $tipo: String,
     $firstName: String,
+    $lastName: String,
+    $edad: Int,
+    $direccion: String,
+    $ocupacion: String,
+    $partos: Int,
+    $cesareas: Int,
+    $apellidosRNLactante: String,
+    $sdg: Int,
+    $fechaNacimRN: String,
+    $complicacionesEmbarazo: String,
+    $transfusionesUltimos5Anos: String,
+    $tatuajesPiercingsAcupunturaUltimoAno: String,
+    $tratamientoMedico: String,
+    $pruebaRapidaSifilis: String,
+    $pruebaRapidaVIH: String,
+    $pruebaRapidaHepatitisC: String,
+    $observaciones: String
   ) {
     createDonante(
       tipo: $tipo,
       firstName: $firstName,
+      lastName: $lastName,
+      edad: $edad,
+      direccion: $direccion,
+      ocupacion: $ocupacion,
+      partos: $partos,
+      cesareas: $cesareas,
+      apellidosRNLactante: $apellidosRNLactante,
+      sdg: $sdg,
+      fechaNacimRN: $fechaNacimRN,
+      complicacionesEmbarazo: $complicacionesEmbarazo,
+      transfusionesUltimos5Anos: $transfusionesUltimos5Anos,
+      tatuajesPiercingsAcupunturaUltimoAno: $tatuajesPiercingsAcupunturaUltimoAno,
+      tratamientoMedico: $tratamientoMedico,
+      pruebaRapidaSifilis: $pruebaRapidaSifilis,
+      pruebaRapidaVIH: $pruebaRapidaVIH,
+      pruebaRapidaHepatitisC: $pruebaRapidaHepatitisC,
+      observaciones: $observaciones
 
     ) {
       tipo
       firstName
-
+      lastName
+      edad
+      direccion
+      ocupacion
+      partos
+      cesareas
+      apellidosRNLactante
+      sdg
+      fechaNacimRN
+      complicacionesEmbarazo
+      transfusionesUltimos5Anos
+      tatuajesPiercingsAcupunturaUltimoAno
+      tratamientoMedico
+      pruebaRapidaSifilis
+      pruebaRapidaVIH
+      pruebaRapidaHepatitisC
+      observaciones
     }
   }
 `;
@@ -52,16 +102,67 @@ export const UPDATE_DONANTE = gql`
     $_id: ID!,
     $tipo: String,
     $firstName: String,
+    $lastName: String,
+    $edad: Int,
+    $direccion: String,
+    $ocupacion: String,
+    $partos: Int,
+    $cesareas: Int,
+    $apellidosRNLactante: String,
+    $sdg: Int,
+    $fechaNacimRN: String,
+    $complicacionesEmbarazo: String,
+    $transfusionesUltimos5Anos: String,
+    $tatuajesPiercingsAcupunturaUltimoAno: String,
+    $tratamientoMedico: String,
+    $pruebaRapidaSifilis: String,
+    $pruebaRapidaVIH: String,
+    $pruebaRapidaHepatitisC: String,
+    $observaciones: String
     
   ) {
     updateDonante(
       _id: $_id,
       tipo: $tipo,
       firstName: $firstName,
+      lastName: $lastName,
+      edad: $edad,
+      direccion: $direccion,
+      ocupacion: $ocupacion,
+      partos: $partos,
+      cesareas: $cesareas,
+      apellidosRNLactante: $apellidosRNLactante,
+      sdg: $sdg,
+      fechaNacimRN: $fechaNacimRN,
+      complicacionesEmbarazo: $complicacionesEmbarazo,
+      transfusionesUltimos5Anos: $transfusionesUltimos5Anos,
+      tatuajesPiercingsAcupunturaUltimoAno: $tatuajesPiercingsAcupunturaUltimoAno,
+      tratamientoMedico: $tratamientoMedico,
+      pruebaRapidaSifilis: $pruebaRapidaSifilis,
+      pruebaRapidaVIH: $pruebaRapidaVIH,
+      pruebaRapidaHepatitisC: $pruebaRapidaHepatitisC,
+      observaciones: $observaciones
     ) {
       _id
       tipo
       firstName
+      lastName
+      edad
+      direccion
+      ocupacion
+      partos
+      cesareas
+      apellidosRNLactante
+      sdg
+      fechaNacimRN
+      complicacionesEmbarazo
+      transfusionesUltimos5Anos
+      tatuajesPiercingsAcupunturaUltimoAno
+      tratamientoMedico
+      pruebaRapidaSifilis
+      pruebaRapidaVIH
+      pruebaRapidaHepatitisC
+      observaciones
     }
   }
 `;
@@ -71,6 +172,23 @@ export const DELETE_DONANTE = gql`
       _id
       tipo
       firstName
+      lastName
+      edad
+      direccion
+      ocupacion
+      partos
+      cesareas
+      apellidosRNLactante
+      sdg
+      fechaNacimRN
+      complicacionesEmbarazo
+      transfusionesUltimos5Anos
+      tatuajesPiercingsAcupunturaUltimoAno
+      tratamientoMedico
+      pruebaRapidaSifilis
+      pruebaRapidaVIH
+      pruebaRapidaHepatitisC
+      observaciones
     }
   }
 `;
@@ -84,7 +202,7 @@ export const CREATE_CALIDAD = gql`
       _id
       firstName
     }
-    olor
+   
   }
 }
 `;
