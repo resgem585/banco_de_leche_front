@@ -18,23 +18,6 @@ export const GET_DONANTES = gql`
     _id 
     tipo
     firstName
-    lastName
-    edad
-    direccion
-    ocupacion
-    partos
-    cesareas
-    apellidosRNLactante
-    sdg
-    fechaNacimRN
-    complicacionesEmbarazo
-    transfusionesUltimos5Anos
-    tatuajesPiercingsAcupunturaUltimoAno
-    tratamientoMedico
-    pruebaRapidaSifilis
-    pruebaRapidaVIH
-    pruebaRapidaHepatitisC
-    observaciones
     }
   }
 `;
@@ -44,38 +27,33 @@ export const GET_DONANTE = gql`
       _id
       tipo
       firstName
-      lastName
-      edad
-      direccion
-      ocupacion
-      partos
-      cesareas
-      apellidosRNLactante
-      sdg
-      fechaNacimRN
-      complicacionesEmbarazo
-      transfusionesUltimos5Anos
-      tatuajesPiercingsAcupunturaUltimoAno
-      tratamientoMedico
-      pruebaRapidaSifilis
-      pruebaRapidaVIH
-      pruebaRapidaHepatitisC
-      observaciones
     }
   }
 `;
 
-// Calidad
-
 export const GET_CALIDADES = gql`
   query GetCalidades {
     getCalidades {
-      _id
+      id
       donante {
         _id
         firstName
       }
+      sdg
       
+    }
+  }
+`;
+
+export const GET_CALIDAD = gql`
+  query GetCalidad($_id: ID!) {
+    getCalidad(id: $_id) {
+      id
+      donante {
+        
+        firstName
+      }
+      sdg
     }
   }
 `;

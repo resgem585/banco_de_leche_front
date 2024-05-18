@@ -8,8 +8,13 @@ const CalidadView = () => {
   const [deleteCalidad] = useMutation(DELETE_CALIDAD);
 
   const handleDeleteCalidad = async (calidadId) => {
+    if (!calidadId) {
+      console.error("No calidadId provided");
+      return;
+    }
+
     try {
-      await deleteCalidad({ variables: { _id: calidadId } });
+      await deleteCalidad({ variables: { id: calidadId } });
       // Refetch the quality list after deletion
       refetch();
     } catch (error) {
@@ -32,7 +37,7 @@ const CalidadView = () => {
         </thead>
         <tbody>
           {data.getCalidades.map((calidad) => (
-            <tr key={calidad._id}>
+            <tr key={calidad.id}>
               <td>{calidad.donante.firstName}</td>
               <td>
                 <Link
@@ -42,14 +47,14 @@ const CalidadView = () => {
                   <i className="bi bi-eye"></i>
                 </Link>
                 <Link
-                  to={`/EditarCalidad/${calidad._id}`}
+                  to={`/EditarCalidad/${calidad.id}`}
                   className="btn btn-warning me-2"
                 >
                   <i className="bi bi-pencil"></i>
                 </Link>
                 <button
                   className="btn btn-danger"
-                  onClick={() => handleDeleteCalidad(calidad._id)}
+                  onClick={() => handleDeleteCalidad(calidad.id)}
                 >
                   <i className="bi bi-trash"></i>
                 </button>
